@@ -1,4 +1,27 @@
-<div class="container">
-  <p>Component</p>
-</div>
+<!--<div class="container">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">{{title}}</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['/upload']"><span class="glyphicon glyphicon-user"></span>Upload</a></li>
+          <li routerLinkActive="active"><a [routerLink]="['/myrepository']"><span class="glyphicon glyphicon-log-in"></span>My Repository</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>-->
+<nav>
+  <div class="nav-wrapper blue">
+    <a href="#" class="brand-logo">Auditory</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/upload']">Upload</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/myrepository']">My Repository</a></li>
+    </ul>
+  </div>
+</nav>
 <router-outlet></router-outlet>
