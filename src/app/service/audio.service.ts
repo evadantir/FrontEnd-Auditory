@@ -13,7 +13,7 @@ export class AudioService {
 
   constructor(private http: Http){}
 
-  apiAudioUrl: string = 'http://localhost:3333/';
+  apiAudioUrl: string = 'http://localhost:3333/audio';
   audiovar: Audio[];
 
   private handleError(error:any): Promise<any> {
@@ -42,7 +42,7 @@ export class AudioService {
 
     /* Pengambilan via API*/
     return this.http
-      .get(this.apiAudioUrl + category)
+      .get(this.apiAudioUrl + "?=" + category)
       .map((response: Response) => {
         let audio = response.json();
         let listAudio = new Array<Audio>();
@@ -66,22 +66,46 @@ export class AudioService {
 
   getallAudio(): Promise<Audio[]> {
     /* Pengambilan via Mock*/
-    return Promise.resolve(AUDIOS);
-  }
+    //return Promise.resolve(AUDIOS);
 
-  getAllCategory(): Promise<String[]> {
     /* Pengambilan via API*/
     return this.http
-      .get(this.apiAudioUrl + "category")
+      .get(this.apiAudioUrl)
       .map((response: Response) => {
-        let cat = response.json();
-        let listCategory = new Array<String>();
+        let audio = response.json();
+        let listAudio = new Array<Audio>();
         let i : number;
-        for(i=0;i<cat.length;i++)
+        for(i=0;i<audio.length;i++)
         {
-          listCategory[i] = cat[i];
+          listAudio.push(
+          {
+            audioID: audio[i].ID,
+            audioTitle: audio[i].audioTitle,
+          	audioLength: audio[i].length,
+          	albumUrl: audio[i].audioTitle,
+          	filePath: audio[i].filePath,
+          	tag: audio[i].tags,
+          	category: audio[i].category
+          });
         }
-        return listCategory;
+        return listAudio;
+      }).toPromise().catch(this.handleError);
+  }
+
+  findAudio(audioID : number): Promise<Audio> {
+    return this.http
+      .get(this.apiAudioUrl + "/" + audioID)
+      .map((response: Response) => {
+        let audio = response.json();
+        let foundAudio : Audio;
+        foundAudio.audioID = audio.ID;
+        foundAudio.audioTitle = audio.audioTitle;
+        foundAudio.audioLength = audio.length;
+        foundAudio.albumUrl = audio.audioTitle;
+        foundAudio.filePath = audio.filePath;
+        foundAudio.tag = audio.tags;
+        foundAudio.category = audio.category;
+        return foundAudio;
       }).toPromise().catch(this.handleError);
   }
 }
