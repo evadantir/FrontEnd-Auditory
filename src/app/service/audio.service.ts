@@ -45,6 +45,7 @@ export class AudioService {
       .get(this.apiAudioUrl + "?=" + category)
       .map((response: Response) => {
         let audio = response.json();
+        console.log(audio);
         let listAudio = new Array<Audio>();
         let i : number;
         for(i=0;i<audio.length;i++)

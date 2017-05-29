@@ -22,6 +22,7 @@ export class AlbumService {
       .get(this.apiAudioUrl + "album")
       .map((response: Response) => {
         let abm = response.json();
+        console.log(abm);
         let listAlbum = new Array<string>();
         let i : number;
         for(i=0;i<abm.length;i++)
