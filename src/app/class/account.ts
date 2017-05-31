@@ -3,4 +3,5 @@ export class Account {
   email: string;
   accountName: string;
   password: string;
+  playlist: any[];
 }

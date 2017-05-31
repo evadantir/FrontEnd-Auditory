@@ -1,6 +1,9 @@
 export class Audio {
 	audioID: number;
-  audioTitle: string;
-  audioLength: number;
-  filePath: string;
+	audioTitle: string;
+	audioLength: number;
+	albumUrl: string;
+	filePath: string;
+	tag: any[];
+	category: string;
 }
