@@ -2,8 +2,8 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: 'file-uploader',
-    templateUrl: 'app/file-uploader.component.html',
-    styleUrls: ['app/file-uploader.component.css'],
+    templateUrl: 'template/file-uploader.component.html',
+    styleUrls: ['css/file-uploader.component.css'],
     inputs:['activeColor','baseColor','overlayColor']
 })
 export class FileUploaderComponent {
