@@ -6,7 +6,6 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/from';
 
 import { Audio } from '../class/audio';
-import { AUDIOS } from '../mock/mock-audio';
 
 @Injectable()
 export class AudioService {
