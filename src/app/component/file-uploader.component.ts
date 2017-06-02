@@ -1,42 +1,44 @@
-import {Component} from 'angular2/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'file-uploader',
-    templateUrl: 'template/file-uploader.component.html',
-    styleUrls: ['css/file-uploader.component.css'],
+    templateUrl: 'app/template/file-uploader.component.html',
+    //styleUrls: ['css/file-uploader.component.css'],
     inputs:['activeColor','baseColor','overlayColor']
 })
 export class FileUploaderComponent {
-    
+
     activeColor: string = 'green';
     baseColor: string = '#ccc';
     overlayColor: string = 'rgba(255,255,255,0.5)';
-    
+    iconColor: string;
+    borderColor: string;
+
     dragging: boolean = false;
     loaded: boolean = false;
     imageLoaded: boolean = false;
     imageSrc: string = '';
-    
+
     handleDragEnter() {
         this.dragging = true;
     }
-    
+
     handleDragLeave() {
         this.dragging = false;
     }
-    
-    handleDrop(e) {
+
+    handleDrop(e:any) {
         e.preventDefault();
         this.dragging = false;
         this.handleInputChange(e);
     }
-    
+
     handleImageLoad() {
         this.imageLoaded = true;
         this.iconColor = this.overlayColor;
     }
 
-    handleInputChange(e) {
+    handleInputChange(e:any) {
         var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
 
         var pattern = /image-*/;
@@ -52,25 +54,25 @@ export class FileUploaderComponent {
         reader.onload = this._handleReaderLoaded.bind(this);
         reader.readAsDataURL(file);
     }
-    
-    _handleReaderLoaded(e) {
+
+    _handleReaderLoaded(e:any) {
         var reader = e.target;
         this.imageSrc = reader.result;
         this.loaded = true;
     }
-    
+
     _setActive() {
         this.borderColor = this.activeColor;
         if (this.imageSrc.length === 0) {
             this.iconColor = this.activeColor;
         }
     }
-    
+
     _setInactive() {
         this.borderColor = this.baseColor;
         if (this.imageSrc.length === 0) {
             this.iconColor = this.baseColor;
         }
     }
-    
+
 }
