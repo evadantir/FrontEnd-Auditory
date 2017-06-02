@@ -21,24 +21,6 @@ export class AudioService {
   }
 
   getallAudioByCategory(category: string): Promise<Audio[]> {
-    /* Pengambilan via Mock*/
-    /*return this.getallAudio()
-      .then(aud => aud.find(audio => audio.category === category));*/
-    /*let aud = new Array<Audio>();
-    this.getallAudio()
-      .then(p => aud = p);
-    console.log(aud);
-    let i:number;
-    for(i=0;i<aud.length;i++)
-    {
-      if(aud[i].category === category)
-      {
-        this.audiovar[i]=aud[i];
-      }
-    }
-    //console.log(this.audiovar);
-    return Promise.resolve(this.audiovar);*/
-
     /* Pengambilan via API*/
     return this.http
       .get(this.apiAudioUrl + "?=" + category)
@@ -51,10 +33,10 @@ export class AudioService {
         {
           listAudio.push(
           {
-            audioID: audio[i].ID,
+            audioID: audio[i].audioId,
             audioTitle: audio[i].audioTitle,
           	audioLength: audio[i].length,
-          	albumUrl: audio[i].audioTitle,
+          	albumData: audio[i].album,
           	filePath: audio[i].filePath,
           	tag: audio[i].tags,
           	category: audio[i].category
@@ -65,29 +47,28 @@ export class AudioService {
     }
 
   getallAudio(): Promise<Audio[]> {
-    /* Pengambilan via Mock*/
-    //return Promise.resolve(AUDIOS);
-
     /* Pengambilan via API*/
     return this.http
       .get(this.apiAudioUrl)
       .map((response: Response) => {
         let audio = response.json();
+        console.log(audio);
         let listAudio = new Array<Audio>();
         let i : number;
         for(i=0;i<audio.length;i++)
         {
           listAudio.push(
           {
-            audioID: audio[i].ID,
+            audioID: audio[i].audioId,
             audioTitle: audio[i].audioTitle,
           	audioLength: audio[i].length,
-          	albumUrl: audio[i].audioTitle,
+          	albumData: audio[i].album,
           	filePath: audio[i].filePath,
           	tag: audio[i].tags,
           	category: audio[i].category
           });
         }
+        console.log(listAudio);
         return listAudio;
       }).toPromise().catch(this.handleError);
   }
@@ -101,7 +82,7 @@ export class AudioService {
         foundAudio.audioID = audio.ID;
         foundAudio.audioTitle = audio.audioTitle;
         foundAudio.audioLength = audio.length;
-        foundAudio.albumUrl = audio.audioTitle;
+        foundAudio.albumData = audio.album;
         foundAudio.filePath = audio.filePath;
         foundAudio.tag = audio.tags;
         foundAudio.category = audio.category;
