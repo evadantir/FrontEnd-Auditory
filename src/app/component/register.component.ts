@@ -1,11 +1,13 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AlertService, UserService } from '../service';
+import { AlertService } from '../service/alert.service';
+import { AuthenticationService } from '../service/authentication.service';
+import { UserService } from '../service/user.service';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'template/register.component.html'
+    selector: 'app-register',
+    templateUrl: 'app/template/register.component.html'
 })
 
 export class RegisterComponent {
