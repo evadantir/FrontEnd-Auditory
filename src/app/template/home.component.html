@@ -1,0 +1,15 @@
+<div class="slider">
+  <ul class="slides">
+    <li *ngFor="let sld of listSlider">
+      <img src={{sld.url}}> <!-- random image -->
+      <div class="caption center-align">
+        <h3>This is our big Tagline!</h3>
+        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="carousel" *ngFor="let aud of listAudio">
+  <a class="carousel-item" href="#one!"><img src={{aud.album}}></a>
+</div>

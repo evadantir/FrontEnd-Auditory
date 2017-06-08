@@ -1,27 +1,41 @@
-<!--<div class="container">
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand">{{title}}</a>
+<div class="navbar-fixed">
+  <nav class="blue">
+    <div class="nav-wrapper">
+      <a [routerLink]="['/home']" class="brand-logo">Auditory</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/upload']">Upload</a></li>
+        <!--<li routerLinkActive="active"><a [routerLink]="['/myrepository']">My Repository</a></li>-->
+        <li routerLinkActive="active"><a [routerLink]="['/audio']">Audio List</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>
+
+<footer class="page-footer blue">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
       </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
-          <li routerLinkActive="active"><a [routerLink]="['/upload']"><span class="glyphicon glyphicon-user"></span>Upload</a></li>
-          <li routerLinkActive="active"><a [routerLink]="['/myrepository']"><span class="glyphicon glyphicon-log-in"></span>My Repository</a></li>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
         </ul>
       </div>
     </div>
-  </nav>
-</div>-->
-<nav>
-  <div class="nav-wrapper blue">
-    <a href="#" class="brand-logo">Auditory</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/upload']">Upload</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/myrepository']">My Repository</a></li>
-    </ul>
   </div>
-</nav>
-<router-outlet></router-outlet>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>
