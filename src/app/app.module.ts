@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 /* Component Files*/
 import { AppComponent }  from './component/app.component';
 import { HomeComponent }  from './component/home.component';
-//import { StreamComponent }  from './component/stream.component';
+import { StreamComponent }  from './component/stream.component';
 import { AudioListComponent } from './component/audiolist.component';
 import { CategoryComponent } from './component/category.component';
 import { AlbumComponent } from './component/album.component';
@@ -31,7 +31,7 @@ import { AlertService } from './service/alert.service';
   declarations: [
     AppComponent,
     HomeComponent,
-    //    StreamComponent,
+    StreamComponent,
     AudioListComponent,
     CategoryComponent,
     AlbumComponent,

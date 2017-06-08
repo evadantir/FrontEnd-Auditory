@@ -73,13 +73,13 @@ export class AudioService {
       }).toPromise().catch(this.handleError);
   }
 
-  findAudio(audioID : number): Promise<Audio> {
+  findAudio(audioID : string): Promise<Audio> {
     return this.http
-      .get(this.apiAudioUrl + "/" + audioID)
+      .get(this.apiAudioUrl + "?=" + audioID)
       .map((response: Response) => {
         let audio = response.json();
         let foundAudio : Audio;
-        foundAudio.audioID = audio.ID;
+        foundAudio.audioID = audio.audioId;
         foundAudio.audioTitle = audio.audioTitle;
         foundAudio.audioLength = audio.length;
         foundAudio.albumData = audio.album;

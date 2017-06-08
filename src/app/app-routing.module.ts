@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './component/app.component';
 import { HomeComponent }  from './component/home.component';
-//import { StreamComponent } from './component/stream.component';
+import { StreamComponent } from './component/stream.component';
 import { AudioListComponent } from './component/audiolist.component';
 import { CategoryComponent } from './component/category.component';
 import { AlbumComponent } from './component/album.component';
@@ -14,7 +14,8 @@ import { FileUploaderComponent } from './component/file-uploader.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-//  { path: 'stream', component: StreamComponent },
+  //{ path: 'stream', component: StreamComponent },
+  { path: 'streaming/:audioId', component: StreamComponent },
   { path: 'audio', component: AudioListComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'album', component: AlbumComponent },
