@@ -1,22 +1,36 @@
-<br><br><br><br>
-
-<a routerLinkActive="active" [routerLink]="['/category']">See All Category</a>
-<h1>{{ cat }}</h1>
+<!--<h1>{{ cat1 }}</h1>
 <div class="row" *ngFor="let aud of listAudio">
   <div class="col s4">
-    <!-- Audio Information here -->
     <div class="card">
       <div class="card-image">
         <img src={{aud.albumUrl}}>
-        <span class="card-title">{{ aud.audioTitle }}</span>
+        <span class="card-title black">{{ aud.audioTitle }}</span>
       </div>
-      <div class="card-content">
-        <p>{{ aud.tag }}</p>
+      <div class="card-content" *ngFor="let cat of cats">
+        <p>{{ cats.categoryName }}</p>
       </div>
       <div class="card-action">
         <i class="material-icons">play_arrow</i>
-        <a [routerLink]="['/streaming',audioId]">Play Audio</a>
+        <a [routerLink]="['/streaming',aud.audioID]">Play Audio</a>
       </div>
     </div>
   </div>
+</div>-->
+<h3 class="center">{{ cat1 }}</h3>
+<hr>
+<div class="row">
+  <div class="col s12 m4" *ngFor="let aud of listAudio">
+    <div class="icon-block">
+      <h4 class="center light-blue-text"><i class="material-icons"><img src="app/asset/prism.png"></i></h4>
+      <h5 class="center">{{ aud.audioTitle }}</h5>
+      <p class="light">{{ aud.category.categoryName }}</p>
+    </div>
+
+    <div class="play">
+      <a href="http://192.168.177.61:3003/streaming?id={{aud.filePath}}" class="btn btn-brown">Play Audio</a>
+      <!-- <a [routerLink]="['/streaming',aud.audioID]" class="btn btn-brown">Play Audio</a>-->
+    </div>
+  </div>
 </div>
+<hr>
+<a routerLinkActive="active" [routerLink]="['/category']">See All Category</a>

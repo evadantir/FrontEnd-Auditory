@@ -11,25 +11,25 @@ export class CategoryService {
   constructor(private http: Http){}
 
   category: string;
-  apiAudioUrl: string = 'http://localhost:3333/';
+  apiAudioUrl: string = 'http://192.168.177.1:3333/category';
 
   private handleError(error:any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
-  getAllCategory(): Promise<string[]> {
+  getAllCategoryName(): Promise<string[]> {
     /* Pengambilan via API*/
     return this.http
-      .get(this.apiAudioUrl + "category")
+      .get(this.apiAudioUrl)
       .map((response: Response) => {
         let cat = response.json();
-        console.log(cat);
+        //console.log(cat);
         let listCategory = new Array<string>();
         let i : number;
         for(i=0;i<cat.length;i++)
         {
-          listCategory[i] = cat[i];
+          listCategory[i] = cat[i].categoryName;
         }
         return listCategory;
       }).toPromise().catch(this.handleError);

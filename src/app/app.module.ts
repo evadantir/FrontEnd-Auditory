@@ -19,6 +19,7 @@ import { FileUploaderComponent } from './component/file-uploader.component';
 import { AudioService } from './service/audio.service';
 import { AlbumService } from './service/album.service';
 import { CategoryService } from './service/category.service';
+import { StreamService } from './service/stream.service';
 import { UserService } from './service/user.service';
 import { AuthenticationService } from './service/authentication.service';
 import { AlertService } from './service/alert.service';
@@ -43,6 +44,7 @@ import { AlertService } from './service/alert.service';
     AudioService,
     AlbumService,
     CategoryService,
+    //StreamService,
     UserService,
     AuthenticationService,
     AlertService

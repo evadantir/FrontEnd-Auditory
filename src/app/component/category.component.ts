@@ -12,7 +12,7 @@ export class CategoryComponent implements OnInit {
   listCategory: String[] = [];
 
   ngOnInit(): void {
-    this.catService.getAllCategory()
+    this.catService.getAllCategoryName()
       .then(list => this.listCategory =list);
   }
 }

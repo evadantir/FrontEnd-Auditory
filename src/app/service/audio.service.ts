@@ -12,7 +12,7 @@ export class AudioService {
 
   constructor(private http: Http){}
 
-  apiAudioUrl: string = 'http://localhost:3333/audio';
+  apiAudioUrl: string = 'http://192.168.177.1:3333/audio';
   audiovar: Audio[];
 
   private handleError(error:any): Promise<any> {
@@ -26,7 +26,7 @@ export class AudioService {
       .get(this.apiAudioUrl + "?=" + category)
       .map((response: Response) => {
         let audio = response.json();
-        console.log(audio);
+        //console.log(audio);
         let listAudio = new Array<Audio>();
         let i : number;
         for(i=0;i<audio.length;i++)
@@ -42,6 +42,7 @@ export class AudioService {
           	category: audio[i].category
           });
         }
+        //console.log(listAudio);
         return listAudio;
       }).toPromise().catch(this.handleError);
     }
@@ -52,7 +53,7 @@ export class AudioService {
       .get(this.apiAudioUrl)
       .map((response: Response) => {
         let audio = response.json();
-        console.log(audio);
+        //console.log(audio);
         let listAudio = new Array<Audio>();
         let i : number;
         for(i=0;i<audio.length;i++)
@@ -68,7 +69,7 @@ export class AudioService {
           	category: audio[i].category
           });
         }
-        console.log(listAudio);
+        console.log(listAudio[0]);
         return listAudio;
       }).toPromise().catch(this.handleError);
   }

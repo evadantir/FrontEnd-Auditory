@@ -14,12 +14,26 @@ export class AudioListComponent implements OnInit/*, AfterViewInit*/{
   constructor(private audioService: AudioService) { }
 
   listAudio: Audio[] = [];
+  cats: string;
+  listStream: string[] = [
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id=",
+    "http://192.168.177.61:3003/streaming?id="
+  ];
   selectedAudio: Audio;
   cat1: string = 'Music';
 
   ngOnInit(): void {
     /*this.audioService.getallAudioByCategory('Music')
       .then(list => this.listAudio = list);*/
-      this.audioService.getallAudio();
+      this.audioService.getallAudio()
+        .then(list => this.listAudio = list);
   }
+
 }
