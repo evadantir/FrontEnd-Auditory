@@ -39,7 +39,13 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      /** Configuration for ng2-file-upload */
+      'ng2-file-upload' : {
+        main: '../node_modules/ng2-file-upload/ng2-file-upload.js',
+        defaultExtension: 'js'
       }
+      /** Configuration for ng2-file-upload */
     }
   });
 })(this);

@@ -1,78 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FileUploader } from 'ng2-file-upload';
+import { UploadService } from '../service/upload.service'
+import { Audio } from '../class/audio'
 
 @Component({
     selector: 'file-uploader',
-    templateUrl: 'app/template/file-uploader.component.html',
-    //styleUrls: ['css/file-uploader.component.css'],
-    inputs:['activeColor','baseColor','overlayColor']
+    templateUrl: 'app/template/file-uploader.component.html'
 })
-export class FileUploaderComponent {
+export class FileUploaderComponent implements OnInit {
 
-    activeColor: string = 'green';
-    baseColor: string = '#ccc';
-    overlayColor: string = 'rgba(255,255,255,0.5)';
-    iconColor: string;
-    borderColor: string;
+  @Input() audio:Audio;
+  responseStatus:Object= [];
+  status:boolean ;
+  urlServer: string = "http://192.168.236.67:3003/upload";
 
-    dragging: boolean = false;
-    loaded: boolean = false;
-    imageLoaded: boolean = false;
-    imageSrc: string = '';
+  constructor(private uploadService: UploadService) {}
 
-    handleDragEnter() {
-        this.dragging = true;
+  public uploader:FileUploader = new FileUploader({url: this.urlServer});
+
+  submitPost()
+  {
+    //console.log("submit Post click happend " + this.message.name)
+    this.uploadService.postAudio(this.audio).subscribe(
+      data => console.log(this.responseStatus = data),
+      err => console.log(err),
+      () => console.log('Request Completed')
+    );
+    this.status = true;
+  }
+
+  ngOnInit() {
+       this.audio = new Audio();
     }
-
-    handleDragLeave() {
-        this.dragging = false;
-    }
-
-    handleDrop(e:any) {
-        e.preventDefault();
-        this.dragging = false;
-        this.handleInputChange(e);
-    }
-
-    handleImageLoad() {
-        this.imageLoaded = true;
-        this.iconColor = this.overlayColor;
-    }
-
-    handleInputChange(e:any) {
-        var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-
-        var pattern = /image-*/;
-        var reader = new FileReader();
-
-        if (!file.type.match(pattern)) {
-            alert('invalid format');
-            return;
-        }
-
-        this.loaded = false;
-
-        reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
-    }
-
-    _handleReaderLoaded(e:any) {
-        var reader = e.target;
-        this.imageSrc = reader.result;
-        this.loaded = true;
-    }
-
-    _setActive() {
-        this.borderColor = this.activeColor;
-        if (this.imageSrc.length === 0) {
-            this.iconColor = this.activeColor;
-        }
-    }
-
-    _setInactive() {
-        this.borderColor = this.baseColor;
-        if (this.imageSrc.length === 0) {
-            this.iconColor = this.baseColor;
-        }
-    }
-
 }

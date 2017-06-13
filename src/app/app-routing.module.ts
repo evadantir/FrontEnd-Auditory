@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'streaming', component: StreamComponent },
   { path: 'streaming/:audioId', component: StreamComponent },
   { path: 'audio', component: AudioListComponent },
   { path: 'category', component: CategoryComponent },

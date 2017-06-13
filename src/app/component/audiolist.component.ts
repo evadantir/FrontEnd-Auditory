@@ -15,17 +15,6 @@ export class AudioListComponent implements OnInit/*, AfterViewInit*/{
 
   listAudio: Audio[] = [];
   cats: string;
-  listStream: string[] = [
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id=",
-    "http://192.168.177.61:3003/streaming?id="
-  ];
   selectedAudio: Audio;
   cat1: string = 'Music';
 
