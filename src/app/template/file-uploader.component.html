@@ -1,20 +1,121 @@
-<label class="uploader" ondragover="return false;"
-    [class.loaded]="loaded" 
-    [style.outlineColor]="dragging ? activeColor : baseColor"
-    (dragenter)="handleDragEnter()"
-    (dragleave)="handleDragLeave()"
-    (drop)="handleDrop($event)">
-    
-    <i class="icon icon-upload" 
-        [style.color]="dragging 
-            ? ((imageSrc.length > 0) ? overlayColor : activeColor)
-            : ((imageSrc.length > 0) ? overlayColor : baseColor)"></i>
-    
-    <img 
-        [src]="imageSrc" 
-        (load)="handleImageLoad()" 
-        [class.loaded]="imageLoaded"/>
-    
-    <input type="file" name="file" accept="image/*"
-        (change)="handleInputChange($event)">
-</label>
+<div class="container">
+  <h3 class="header">Uploading File</h3>
+  <div class="row">
+    <form class="col s12" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="audioName" type="text" class="validate" required="required" [(ngModel)]="audio.audioTitle" name="title">
+          <label for="audioName">Audio Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="category" type="text" class="validate" required="required" [(ngModel)]="audio.category" name="category">
+          <label for="category">Category</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="tags" type="text" class="validate" required="required" [(ngModel)]="audio.tag" name="tag">
+          <label for="tags">Tags</label>
+        </div>
+      </div>
+      <div class="row">
+        Queue progress:
+        <div class="progress">
+          <div class="determinate" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+        </div>
+        <div class="row">
+          <input type="file" class="form-control" name="single" required="required" ng2FileSelect [uploader]="uploader" />
+          <!--<button type="button" class="waves-effect waves-light btn" (click)="uploader.queue.upload()" (click) ="submitPost()">-->
+          <button type="button" class="waves-effect waves-light btn" (click)="uploader.uploadAll()">
+            <i class="material-icons">file_upload</i>Upload
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!--<div class="containter">
+<div class="row">
+    <h3 class="header">Uploading File</h3>
+  <div>
+    <form action="#" class="col s12">
+      <div class="form-group">
+        <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
+      </div>-->
+      <!--<div class="input-field">
+        <input disabled value="{{ uploader?.queue?.file?.name }}" id="disabled" type="text" class="validate">
+        <label for="disabled">File Name</label>
+      </div>
+      <div class="input-field">
+        <input disabled value="{{ uploader?.queue?.file?.size/1024/1024 | number:'.2' }} MB" id="disabled" type="text" class="validate">
+        <label for="disabled">File Name</label>
+      </div>
+      <div class="input-field">
+        <input id="audioName" type="text" class="validate">
+        <label for="audioName">Audio Title</label>
+      </div>-->
+    <!--</form>
+  </div>
+  <div class="col s9">
+    <h3>File Status</h3>
+    Queue length: {{ uploader?.queue?.length }}
+    <table class="responsive-table highlight">
+      <thead>
+        <tr>
+          <th width="50%">Name</th>
+          <th>Size</th>
+          <th>Progress</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of uploader.queue">
+          <td><strong>{{ item.file.name }}</strong></td>
+          <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
+          <td>
+            <div class="progress" style="margin-bottom: 0;">
+              <div class="determinate" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+            </div>
+          </td>
+          <td class="text-center">
+            <span *ngIf="item.isSuccess"><i class="material-icons">done</i></span>
+            <span *ngIf="item.isCancel"><i class="material-icons">cancel</i></span>
+            <span *ngIf="item.isError"><i class="material-icons">error</i></span>
+          </td>
+          <td>
+            <button type="button" class="btn-floating btn-large waves-effect waves-light" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+              <i class="material-icons">file_upload</i>Upload
+            </button>
+            <button type="button" class="btn-floating btn-large waves-effect waves-light red" (click)="item.cancel()" [disabled]="!item.isUploading">
+              <i class="material-icons">cancel</i>Cancel
+            </button>
+            <button type="button" class="btn-floating btn-large waves-effect waves-light" (click)="item.remove()">
+              <i class="material-icons">remove_from_queue</i>Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <div>
+        Queue progress:
+        <div class="progress">
+          <div class="determinate" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+        <span class="glyphicon glyphicon-upload"></span> Upload all
+      </button>
+      <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+        <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+      </button>
+      <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+        <span class="glyphicon glyphicon-trash"></span> Remove all
+      </button>
+    </div>
+  </div>-->
+<!--</div>
+</div>-->
