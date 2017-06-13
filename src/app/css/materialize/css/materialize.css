@@ -3,6 +3,17 @@
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+
+.Site {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+.Site-content {
+  flex: 1 1 auto;
+}
+
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -2159,6 +2170,9 @@ html {
  */
 body {
   margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 /* HTML5 display definitions
