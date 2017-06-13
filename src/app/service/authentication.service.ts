@@ -7,9 +7,17 @@ import 'rxjs/add/operator/map'
 export class AuthenticationService {
     constructor(private http: Http) { }
 
-    login(username: string, password: string) {
-        return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
+	accountAPIUrl: string = "http://localhost:2222/";
+	
+	register(nim: string, email: string, accountName: string, password: string) {
+		return this.http.post(this.accountAPIUrl, JSON.stringify({ nim, email, accountName, password}))
             .map((response: Response) => {
+				
+			});
+	}
+	
+    login(username: string, password: string) {
+        return this.http.get(this.accountAPIUrl).map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
                 if (user && user.token) {

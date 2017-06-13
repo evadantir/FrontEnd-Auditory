@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Audio } from '../class/audio';
 import { AudioService } from '../service/audio.service'
-import { SLIDER } from '../mock/mock-slider'
+//import { SLIDER } from '../mock/mock-slider'
 //import '../js/slider'
 
 @Component({
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit{
   }
 
   listAudio: Audio[] = [];
-  public listSlider = SLIDER;
+  //public listSlider = SLIDER;
 
   ngOnInit(): void {
       this.audioService.getallAudio();
