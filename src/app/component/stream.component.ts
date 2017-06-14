@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRoute,Router, Params} from '@angular/router';
-import { Audio } from '../class/audio'
+import { Audios } from '../class/audio'
 import { StreamService } from '../service/stream.service'
 
 @Component({
@@ -11,8 +11,9 @@ import { StreamService } from '../service/stream.service'
 @Injectable()
 export class StreamComponent implements OnInit {
 
-  allAudio: Audio[] = [];
+  allAudio: Audios[] = [];
   audioFile: string;
+  streamUrl: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +25,8 @@ export class StreamComponent implements OnInit {
     this.streamService.getStreamPath(this.route.snapshot.params['audioId'])
       .then(playing => this.audioFile = playing);
 
-    this.goStream(this.audioFile);
+    //this.goStream(this.audioFile);
+    //var audio = new Audio(this.audioFile);
   }
 
   goStream(pathFile:string):void{

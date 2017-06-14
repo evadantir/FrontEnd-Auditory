@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/from';
 import { Playlist } from '../mock/mock-playlist'
-import { Audio } from '../class/audio'
+import { Audios } from '../class/audio'
 import { AudioService } from './audio.service'
 
 export class StreamService {
@@ -13,7 +13,7 @@ export class StreamService {
     private http: Http,
     private audioService: AudioService){}
 
-  aud: Audio;
+  aud: Audios;
   path: string;
 
   private handleError(error:any): Promise<any> {
@@ -21,7 +21,7 @@ export class StreamService {
     return Promise.reject(error.message || error);
   }
 
-  getPlaylist(): Promise<Audio[]>{
+  getPlaylist(): Promise<Audios[]>{
     return Promise.resolve(Playlist);
   }
 
@@ -33,7 +33,7 @@ export class StreamService {
     return Promise.resolve(this.path);
   }
 
-  addToPlaylist(selected: Audio):void {
+  /*addToPlaylist(selected: Audio):void {
     Playlist.push(selected);
-  }
+  }*/
 }

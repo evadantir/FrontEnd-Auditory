@@ -4,30 +4,29 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/from';
-
-import { Audio } from '../class/audio';
+import { Audios } from '../class/audio';
 
 @Injectable()
 export class AudioService {
 
   constructor(private http: Http){}
 
-  apiAudioUrl: string = 'http://192.168.177.1:3333/audio';
-  audiovar: Audio[];
+  apiAudioUrl: string = 'http://repositoryservice.herokuapp.com/audio';
+  audiovar: Audios[];
 
   private handleError(error:any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 
-  getallAudioByCategory(category: string): Promise<Audio[]> {
+  getallAudioByCategory(category: string): Promise<Audios[]> {
     /* Pengambilan via API*/
     return this.http
       .get(this.apiAudioUrl + "?=" + category)
       .map((response: Response) => {
         let audio = response.json();
         //console.log(audio);
-        let listAudio = new Array<Audio>();
+        let listAudio = new Array<Audios>();
         let i : number;
         for(i=0;i<audio.length;i++)
         {
@@ -47,14 +46,14 @@ export class AudioService {
       }).toPromise().catch(this.handleError);
     }
 
-  getallAudio(): Promise<Audio[]> {
+  getallAudio(): Promise<Audios[]> {
     /* Pengambilan via API*/
     return this.http
       .get(this.apiAudioUrl)
       .map((response: Response) => {
         let audio = response.json();
         //console.log(audio);
-        let listAudio = new Array<Audio>();
+        let listAudio = new Array<Audios>();
         let i : number;
         for(i=0;i<audio.length;i++)
         {
@@ -74,12 +73,12 @@ export class AudioService {
       }).toPromise().catch(this.handleError);
   }
 
-  findAudio(audioID : string): Promise<Audio> {
+  findAudio(audioID : string): Promise<Audios> {
     return this.http
       .get(this.apiAudioUrl + "?=" + audioID)
       .map((response: Response) => {
         let audio = response.json();
-        let foundAudio : Audio;
+        let foundAudio : Audios;
         foundAudio.audioID = audio.audioId;
         foundAudio.audioTitle = audio.audioTitle;
         foundAudio.audioLength = audio.length;

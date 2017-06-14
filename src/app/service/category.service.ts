@@ -11,7 +11,7 @@ export class CategoryService {
   constructor(private http: Http){}
 
   category: string;
-  apiAudioUrl: string = 'http://192.168.177.1:3333/category';
+  apiAudioUrl: string = 'http://repositoryservice.herokuapp.com/category';
 
   private handleError(error:any): Promise<any> {
     console.error('An error occurred', error);

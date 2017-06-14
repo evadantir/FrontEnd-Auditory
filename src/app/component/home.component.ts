@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Audio } from '../class/audio';
+import { Audios } from '../class/audio';
 import { AudioService } from '../service/audio.service'
 import { SLIDER } from '../mock/mock-slider'
 import { Image } from '../class/image'
@@ -14,8 +14,19 @@ export class HomeComponent implements OnInit{
 
   constructor(private audioService: AudioService) {}
 
-  listAudio: Audio[] = [];
+  listAudio: Audios[] = [];
   public listSlider: Image[];
+  listTeamName1: string[] = [
+    "Andre Febrianto",
+    "Eva Danti Rahmanita",
+    "M. Arief Febriansyah"
+  ]
+  listTeamName2: string[] = [
+    "M. Ganjar Imanudin",
+    "M. Ihya'ul Khair",
+    "M. Taufiq Pratama",
+    "Mutiara Citra Wordstary"
+  ]
 
   ngOnInit(): void {
       this.audioService.getallAudio();

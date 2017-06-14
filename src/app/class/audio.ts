@@ -1,6 +1,6 @@
 import { Album } from './album';
 
-export class Audio {
+export class Audios {
 	audioID: number;
 	audioTitle: string;
 	audioLength: number;

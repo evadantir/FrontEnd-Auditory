@@ -1,3 +1,3 @@
-import { Audio } from '../class/audio'
+import { Audios } from '../class/audio'
 
-export var Playlist: Audio[] = [];
+export var Playlist: Audios[] = [];

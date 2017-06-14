@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { UploadService } from '../service/upload.service'
-import { Audio } from '../class/audio'
+import { Audios } from '../class/audio'
 
 @Component({
     selector: 'file-uploader',
@@ -9,10 +9,10 @@ import { Audio } from '../class/audio'
 })
 export class FileUploaderComponent implements OnInit {
 
-  @Input() audio:Audio;
+  @Input() audio:Audios;
   responseStatus:Object= [];
   status:boolean ;
-  urlServer: string = "http://192.168.236.67:3003/upload";
+  urlServer: string = "http://10.10.193.21:3003/upload";
 
   constructor(private uploadService: UploadService) {}
 
@@ -30,6 +30,6 @@ export class FileUploaderComponent implements OnInit {
   }
 
   ngOnInit() {
-       this.audio = new Audio();
+       this.audio = new Audios();
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Audio } from '../class/audio';
+import { Audios } from '../class/audio';
 import { AudioService } from '../service/audio.service'
 import { StreamService } from '../service/stream.service'
 
@@ -9,13 +9,13 @@ import { StreamService } from '../service/stream.service'
   templateUrl: 'app/template/audiolist.component.html'
 })
 
-export class AudioListComponent implements OnInit/*, AfterViewInit*/{
+export class AudioListComponent implements OnInit{
 
   constructor(private audioService: AudioService) { }
 
-  listAudio: Audio[] = [];
+  listAudio: Audios[] = [];
   cats: string;
-  selectedAudio: Audio;
+  selectedAudio: Audios;
   cat1: string = 'Music';
 
   ngOnInit(): void {
@@ -24,5 +24,4 @@ export class AudioListComponent implements OnInit/*, AfterViewInit*/{
       this.audioService.getallAudio()
         .then(list => this.listAudio = list);
   }
-
 }
