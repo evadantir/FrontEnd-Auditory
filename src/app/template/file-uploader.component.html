@@ -29,12 +29,13 @@
           <button type="button" class="waves-effect waves-light btn" (click)="uploader.uploadAll()">
             <i class="material-icons">file_upload</i>Upload
           </button>
+          <span *ngIf="uploader.isSuccess"><i class="material-icons">done</i></span>
         </div>
       </div>
     </form>
   </div>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 <!--<div class="containter">
 <div class="row">

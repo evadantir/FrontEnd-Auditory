@@ -1,34 +1,15 @@
-<!--<div class="slider">
-  <ul class="slides">
-    <li *ngFor="let sld of listSlider">
-      <img src={{sld.url}}> <!-- random image --
-      <div class="caption center-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-      </div>
-    </li>
-  </ul>
-</div>
-
-<div class="carousel" *ngFor="let aud of listAudio">
-  <a class="carousel-item" href="#one!"><img src={{aud.album}}></a>
-</div>
--->
-<!--<div class= "center">
-  <img src="https://dl.dropboxusercontent.com/content_link/C1iHCWMIO3wp4Iyy2eyymbkpwcN9YEcfcnUVWdxUBo6JXYB2dHowSErbHO51qi1c/file" height="377px">
-</div>-->
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
-      <br><br>
       <h1 class="header center blue-text text-lighten-2">Auditory</h1>
       <div class="row center">
+        <img src="app/asset/logojtk.png" alt="Unsplashed background img 1" width = "275px">
         <h5 class="header col s12 light">An Audio Repository</h5>
       </div>
       <br><br>
     </div>
   </div>
-  <div class="parallax"><img src="app/asset/music.jpg" alt="Unsplashed background img 1"></div>
+
 </div>
 <hr>
 
@@ -71,7 +52,7 @@
           </div>
           <div class="card-content">
             <span class="card-title">Koleksi Sound Effect</span>
-            <p>Temukan koleksi sound effect kesukaanmu di Auditory</p>
+            <p>Cari dan temukan koleksi sound effect kesukaanmu di Auditory</p>
           </div>
           <div class="card-action">
             <a href="#">Lihat Koleksi</a>
@@ -87,7 +68,7 @@
   <div class="section no-pad-bot">
     <div class="container">
       <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        <h5 class="header col s12 light">Repository audio yang khusus untuk kamu nikmati</h5>
       </div>
     </div>
   </div>
@@ -100,13 +81,28 @@
       <div class="col s12 center">
         <h3><i class="mdi-content-send brown-text"></i></h3>
         <h4>Our Team</h4>
-        <div class="col s4">
+        <div class="col s4" *ngFor="let member of listTeamName1">
           <div class="card">
             <div class="card-header">
               <img src="app/asset/profile.gif"/>
             </div>
             <div class="card-content">
-              <span class="card-title">Andre Febrianto</span>
+              <span class="card-title">{{ member }}</span>
+              <p>D-4 Teknik Informatika</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center">
+        <div class="col s3" *ngFor="let member of listTeamName2">
+          <div class="card">
+            <div class="card-header">
+              <img src="app/asset/profile.gif"/>
+            </div>
+            <div class="card-content">
+              <span class="card-title">{{ member }}</span>
               <p>D-4 Teknik Informatika</p>
             </div>
           </div>
@@ -120,9 +116,9 @@
 <div class="parallax-container valign-wrapper">
   <div class="section no-pad-bot">
     <div class="container">
-      <div class="row center">
+      <!--<div class="row center">
         <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
+      </div>-->
     </div>
   </div>
   <div class="parallax"><img src="app/asset/podcast.jpg" alt="Unsplashed background img 3"></div>
